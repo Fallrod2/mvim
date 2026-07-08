@@ -19,7 +19,10 @@ return {
             "<leader>ac",
             function()
                 require("config.ai").guard(function()
-                    require("sidekick.cli").toggle({ name = "claude", focus = true })
+                    require("sidekick.cli").toggle({
+                        name = "claude",
+                        focus = true,
+                    })
                 end)()
             end,
             mode = { "n", "v" },
@@ -29,7 +32,10 @@ return {
             "<leader>ax",
             function()
                 require("config.ai").guard(function()
-                    require("sidekick.cli").toggle({ name = "codex", focus = true })
+                    require("sidekick.cli").toggle({
+                        name = "codex",
+                        focus = true,
+                    })
                 end)()
             end,
             mode = { "n", "v" },

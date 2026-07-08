@@ -33,7 +33,10 @@ vim.g.ai_enabled = M.allowed()
 function M.guard(fn)
     return function()
         if not vim.g.ai_enabled then
-            vim.notify("Outils IA désactivés (mode EPITA)", vim.log.levels.WARN)
+            vim.notify(
+                "Outils IA désactivés (mode EPITA)",
+                vim.log.levels.WARN
+            )
             return
         end
         fn()
@@ -44,15 +47,23 @@ end
 function M.toggle()
     -- Refus de réactiver dans un contexte bloqué
     if not vim.g.ai_enabled and not M.allowed() then
-        vim.notify("IA bloquée dans ce projet (.noai ou dossier EPITA)", vim.log.levels.ERROR)
+        vim.notify(
+            "IA bloquée dans ce projet (.noai ou dossier EPITA)",
+            vim.log.levels.ERROR
+        )
         return
     end
     vim.g.ai_enabled = not vim.g.ai_enabled
     if not vim.g.ai_enabled then
         -- Ferme les sessions sidekick ouvertes
-        pcall(function() require("sidekick.cli").hide() end)
+        pcall(function()
+            require("sidekick.cli").hide()
+        end)
     end
-    vim.notify("Outils IA : " .. (vim.g.ai_enabled and "activés ✓" or "désactivés ✗"))
+    vim.notify(
+        "Outils IA : "
+            .. (vim.g.ai_enabled and "activés ✓" or "désactivés ✗")
+    )
 end
 
 return M

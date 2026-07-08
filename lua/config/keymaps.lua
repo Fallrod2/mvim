@@ -12,16 +12,31 @@ map("n", "<C-k>", "<C-w>k", { desc = "Focus split haut" })
 map("n", "<C-l>", "<C-w>l", { desc = "Focus split droite" })
 
 -- Depuis un terminal intégré (sidekick, :term) : sortir + naviguer
-map("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Focus split gauche (terminal)" })
+map(
+    "t",
+    "<C-h>",
+    "<C-\\><C-n><C-w>h",
+    { desc = "Focus split gauche (terminal)" }
+)
 map("t", "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Focus split bas (terminal)" })
 map("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Focus split haut (terminal)" })
-map("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Focus split droite (terminal)" })
+map(
+    "t",
+    "<C-l>",
+    "<C-\\><C-n><C-w>l",
+    { desc = "Focus split droite (terminal)" }
+)
 
 ----------------------------------------------------------------------
 -- Recherche --
 ----------------------------------------------------------------------
 -- Esc efface le surlignage de recherche (et garde son rôle normal)
-map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Effacer le highlight de recherche" })
+map(
+    "n",
+    "<Esc>",
+    "<cmd>nohlsearch<CR>",
+    { desc = "Effacer le highlight de recherche" }
+)
 
 -- n/N centrent le résultat à l'écran
 map("n", "n", "nzzzv", { desc = "Résultat suivant (centré)" })
