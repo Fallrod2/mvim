@@ -42,14 +42,17 @@ First launch (`mvim`) bootstraps lazy.nvim, installs all plugins pinned by
 `lazy-lock.json`, then Mason installs the LSP servers. Grab a coffee.
 
 ## Structure
+
+```
 init.lua                  -- entry point: leaders + requires
 lua/config/
-options.lua             -- vim options
-keymaps.lua             -- global keymaps
-autocmds.lua            -- autoread, autosave, yank highlight
-ai.lua                  -- AI policy module (allowed/guard/toggle)
-lazy.lua                -- plugin manager bootstrap
+  options.lua             -- vim options
+  keymaps.lua             -- global keymaps
+  autocmds.lua            -- autoread, autosave, yank highlight
+  ai.lua                  -- AI policy module (allowed/guard/toggle)
+  lazy.lua                -- plugin manager bootstrap
 lua/plugins/              -- one spec file per plugin
+```
 
 ## AI kill-switch
 
