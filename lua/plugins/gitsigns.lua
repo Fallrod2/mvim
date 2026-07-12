@@ -2,6 +2,11 @@ return {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" }, -- charge à l'ouverture d'un fichier
     opts = {
+        -- Signes sur les fichiers tout neufs créés par les agents
+        attach_to_untracked = true,
+        -- (défaut, mais explicite : suit les commits/checkouts externes)
+        watch_gitdir = { enable = true },
+
         on_attach = function(bufnr)
             local gs = require("gitsigns")
             local map = function(mode, keys, func, desc)

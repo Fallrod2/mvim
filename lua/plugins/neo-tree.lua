@@ -11,10 +11,16 @@ return {
         { "<leader>t", "<cmd>Neotree toggle<cr>", desc = "Toggle file tree" },
     },
     opts = {
+        -- Décommente si tu veux que les COULEURS git se rafraîchissent aussi
+        -- quand un agent commit hors de nvim. Attention : scan git synchrone.
+        -- git_status_async = false,
         filesystem = {
-            -- Comment neo-tree réagit quand un buffer "dossier" s'ouvre :
-            -- "open_default" = s'ouvre dans la sidebar (comportement IDE)
-            -- "open_current" = s'ouvre dans la fenêtre courante (comme netrw)
+            -- ★ LA ligne qui manquait. Watchers OS-level (libuv fs_event) sur
+            -- les dossiers actuellement ouverts dans l'arbre. Détecte
+            -- create/delete/rename faits HORS de nvim (agents, git checkout,
+            -- terminal). Sans ça, neo-tree ne réagit qu'à TES BufWritePost.
+            use_libuv_file_watcher = true,
+
             hijack_netrw_behavior = "open_default",
             filtered_items = {
                 visible = true,
@@ -23,6 +29,7 @@ return {
             },
             follow_current_file = {
                 enabled = true,
+                leave_dirs_open = true, -- évite que l'arbre se replie sans arrêt
             },
         },
         window = {
